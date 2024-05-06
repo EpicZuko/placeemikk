@@ -90,6 +90,7 @@ const DIVMEDIAFIXEDSTYLED = styled.div`
     position: fixed;
     bottom: 0px;
     width: 100%;
+    z-index: 1000;
   }
 `
 const DIVMEDIASTYLED = styled.div`
