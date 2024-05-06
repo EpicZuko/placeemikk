@@ -28,3 +28,10 @@ export const arrayCatalog = [
     text: 'Где купить?',
   },
 ]
+export const slideProperties = {
+  duration: 1500,
+  transitionDuration: 500,
+  infinite: true,
+  indicators: true,
+  arrows: true,
+}
