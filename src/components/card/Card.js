@@ -1,50 +1,74 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import styled from 'styled-components'
+import { responsive } from '../../utils/constants/Url'
 import CardSaleSliderImg from './CardSaleSliderImg'
+// eslint-disable-next-line import/order
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 
 const CardSale = ({ array }) => {
   return (
-    <CardSaleContainerStyled>
-      {array?.map((element) => (
-        <CardSaleStyled key={element?.id}>
-          {element.discounts && (
-            <SPANDISCOUNTSTYLED>-{element?.discounts}</SPANDISCOUNTSTYLED>
-          )}
-          <CardSaleSliderImg img={element?.img} id={element?.id} />
-          <PRICESTYLED
-            id={element?.id}
-            discountamount={element?.discountAmount}
-          >
-            {element?.price} с
-            {element?.discountAmount && (
-              <PRICESTYLEDIV>{element?.discountAmount} с</PRICESTYLEDIV>
+    <DIVCONTAINERCARDSLIDER>
+      <Carousel
+        responsive={responsive}
+        // eslint-disable-next-line react/jsx-boolean-value
+        autoPlay={true}
+        autoPlaySpeed={8000}
+        // eslint-disable-next-line react/jsx-boolean-value
+        infinite={true}
+      >
+        {array?.map((element) => (
+          <CardSaleStyled key={element?.id}>
+            {element.discounts && (
+              <SPANDISCOUNTSTYLED>-{element?.discounts}</SPANDISCOUNTSTYLED>
             )}
-          </PRICESTYLED>
-          {element?.textSmaller && (
-            <TEXTMSTYLED>{element?.textSmaller}</TEXTMSTYLED>
-          )}
-          {element?.text && <TEXTSTYLED>{element?.text}</TEXTSTYLED>}
-        </CardSaleStyled>
-      ))}
-    </CardSaleContainerStyled>
+            <CardSaleSliderImg img={element?.img} id={element?.id} />
+            <PRICESTYLED
+              id={element?.id}
+              discountamount={element?.discountAmount}
+            >
+              {element?.price} с
+              {element?.discountAmount && (
+                <PRICESTYLEDIV>{element?.discountAmount} с</PRICESTYLEDIV>
+              )}
+            </PRICESTYLED>
+            {element?.textSmaller && (
+              <TEXTMSTYLED>{element?.textSmaller}</TEXTMSTYLED>
+            )}
+            {element?.text && <TEXTSTYLED>{element?.text}</TEXTSTYLED>}
+          </CardSaleStyled>
+        ))}
+      </Carousel>
+    </DIVCONTAINERCARDSLIDER>
   )
 }
 
 export default CardSale
 
-const CardSaleContainerStyled = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 60%;
-  gap: 35px;
-  margin: 100px auto 100px auto;
-  @media (max-width: 1024px) {
-    margin: 100px auto 100px auto;
+const DIVCONTAINERCARDSLIDER = styled.div`
+  width: 59%;
+  margin: 100px auto;
+  z-index: 1000;
+  gap: 0px;
+  padding-left: 23px;
+  & .react-multiple-carousel__arrow--left {
+    background: #c0c0c0;
+    border-radius: 0px;
+    min-width: 33px;
+    min-height: 33px;
+    left: calc(0% + 1px);
+  }
+  & .react-multiple-carousel__arrow--right {
+    background: #c0c0c0;
+    border-radius: 0px;
+    width: 20px;
+    right: calc(2.6% + 1px);
+    min-width: 33px;
+    min-height: 33px;
   }
 `
+
 const CardSaleStyled = styled.div`
   width: 245px;
   height: auto;
@@ -52,7 +76,6 @@ const CardSaleStyled = styled.div`
   border-radius: 4px 0px 0px 0px;
   opacity: 0px;
   background: rgba(255, 255, 255, 1);
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.12);
   padding: 11px 10px;
   padding-bottom: 20px;
 `
