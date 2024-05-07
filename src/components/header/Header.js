@@ -112,11 +112,12 @@ const InputStyled = styled.input`
   opacity: 0px;
   border: 2px solid;
   border: 2px solid transparent;
-  border-image-source: linear-gradient(
+  /* border-image-source: linear-gradient(
     96.78deg,
     #f64d4d -57.09%,
     #4d5ef6 101.17%
-  );
+  ); */
+  border: 1px solid;
   border-image-slice: 1;
   outline: none;
   font-family: Roboto;
