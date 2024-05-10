@@ -1,18 +1,33 @@
-import React from 'react'
+/* eslint-disable jsx-a11y/interactive-supports-focus */
+import React, { useState } from 'react'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import styled from 'styled-components'
 import katalogicon from '../../assets/img/catalogmenu.svg'
 import glavaiicon from '../../assets/img/glavnai.svg'
 import soobsheinicon from '../../assets/img/soobsheni.svg'
 import { arrayCatalog } from '../../utils/constants/Url'
+import Modal from '../modal/Modal'
+import CatalogList from './CatalogList'
 
 const Catalog = () => {
+  const [catalogState, setCatalogState] = useState(false)
+  const catalogHandlerChangeOpen = () => {
+    setCatalogState(true)
+  }
+  const catalogHandlerChangeClose = () => {
+    setCatalogState(false)
+  }
   return (
     <>
       <DIVCONATAINER>
         {arrayCatalog.map((elem) => {
           return (
-            <BUTTONSTYLED variant={elem.variant}>
+            <BUTTONSTYLED
+              onClick={
+                elem.variant === 'blue' ? catalogHandlerChangeOpen : undefined
+              }
+              variant={elem.variant}
+            >
               <DIVIMGCONTAINER>
                 <img src={elem.img} alt='' />
                 <h3>{elem.text}</h3>
@@ -23,7 +38,7 @@ const Catalog = () => {
       </DIVCONATAINER>
       <DIVMEDIAFIXEDSTYLED>
         <DIVMEDIASTYLED>
-          <div>
+          <div role='button' onClick={catalogHandlerChangeOpen}>
             <img src={katalogicon} alt='католог' />
             <H4STYLED>Католог</H4STYLED>
           </div>
@@ -37,6 +52,11 @@ const Catalog = () => {
           </div>
         </DIVMEDIASTYLED>
       </DIVMEDIAFIXEDSTYLED>
+      {catalogState && (
+        <Modal isOpen={catalogState}>
+          <CatalogList onClose={catalogHandlerChangeClose} />
+        </Modal>
+      )}
     </>
   )
 }

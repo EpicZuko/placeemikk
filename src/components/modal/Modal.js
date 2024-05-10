@@ -11,6 +11,10 @@ const ModalContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  @media (max-width: 777px) {
+    height: 100%;
+    width: 100%;
+  }
 `
 
 const ModalContent = styled.div`
