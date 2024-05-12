@@ -58,6 +58,7 @@ const DIVCONTAINERCARDSLIDER = styled.div`
     min-width: 33px;
     min-height: 33px;
     left: calc(0.8% + 1px);
+    z-index: 900;
     @media (max-width: 777px) {
       left: calc(0% + 1px);
     }
@@ -69,6 +70,7 @@ const DIVCONTAINERCARDSLIDER = styled.div`
     right: calc(1.5% + 1px);
     min-width: 33px;
     min-height: 33px;
+    z-index: 900;
     @media (max-width: 777px) {
       right: calc(0% + 1px);
     }
