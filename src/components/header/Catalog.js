@@ -3,42 +3,84 @@ import React, { useState } from 'react'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import styled from 'styled-components'
 import katalogicon from '../../assets/img/catalogmenu.svg'
+import device from '../../assets/img/device.svg'
 import glavaiicon from '../../assets/img/glavnai.svg'
+import menuicons from '../../assets/img/menucatalog.svg'
+import pinDrop from '../../assets/img/pindrop.svg'
 import soobsheinicon from '../../assets/img/soobsheni.svg'
-import { arrayCatalog } from '../../utils/constants/Url'
+import video from '../../assets/img/video.svg'
 import Modal from '../modal/Modal'
 import CatalogList from './CatalogList'
+import CatalogListVideo from './CatalogListVideo'
 
 const Catalog = () => {
-  const [catalogState, setCatalogState] = useState(false)
-  const catalogHandlerChangeOpen = () => {
-    setCatalogState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedCatalog, setSelectedCatalog] = useState('catalog')
+  const [selectedCategory, setSelectedCategory] = useState('device')
+
+  const openModal = (catalog) => {
+    setSelectedCatalog(catalog)
+    setIsModalOpen(true)
   }
-  const catalogHandlerChangeClose = () => {
-    setCatalogState(false)
+
+  const closeModal = () => {
+    setSelectedCatalog(selectedCatalog)
+    setIsModalOpen(false)
   }
   return (
     <>
       <DIVCONATAINER>
-        {arrayCatalog.map((elem) => {
-          return (
-            <BUTTONSTYLED
-              onClick={
-                elem.variant === 'blue' ? catalogHandlerChangeOpen : undefined
-              }
-              variant={elem.variant}
-            >
-              <DIVIMGCONTAINER>
-                <img src={elem.img} alt='' />
-                <h3>{elem.text}</h3>
-              </DIVIMGCONTAINER>
-            </BUTTONSTYLED>
-          )
-        })}
+        <div>
+          <BUTTONSTYLED onClick={() => setIsModalOpen(true)} variant='blue'>
+            <DIVIMGCONTAINER>
+              <img src={menuicons} alt='' />
+              <h3>Каталог</h3>
+            </DIVIMGCONTAINER>
+          </BUTTONSTYLED>
+        </div>
+        <div role='button' onClick={() => setSelectedCatalog('catalog')}>
+          <BUTTONSTYLED
+            active={selectedCategory === 'device'}
+            onClick={() => setSelectedCategory('device')}
+          >
+            <DIVIMGCONTAINER>
+              <img src={device} alt='' />
+              <h3>Комплектующие ПК</h3>
+            </DIVIMGCONTAINER>
+          </BUTTONSTYLED>
+        </div>
+
+        <div role='button' onClick={() => setSelectedCatalog(null)}>
+          <BUTTONSTYLED
+            active={selectedCategory === 'video'}
+            onClick={() => setSelectedCategory('video')}
+          >
+            <DIVIMGCONTAINER>
+              <img src={video} alt='' />
+              <h3>Видеонаблюдение</h3>
+            </DIVIMGCONTAINER>
+          </BUTTONSTYLED>
+        </div>
+        <div>
+          <BUTTONSTYLED>
+            <DIVIMGCONTAINER>
+              <img src={pinDrop} alt='' />
+              <h3>Где купить?</h3>
+            </DIVIMGCONTAINER>
+          </BUTTONSTYLED>
+        </div>
+        <div>
+          <BUTTONSTYLED>
+            <DIVIMGCONTAINER>
+              <img src={pinDrop} alt='' />
+              <h3>Где купить?</h3>
+            </DIVIMGCONTAINER>
+          </BUTTONSTYLED>
+        </div>
       </DIVCONATAINER>
       <DIVMEDIAFIXEDSTYLED>
         <DIVMEDIASTYLED>
-          <div role='button' onClick={catalogHandlerChangeOpen}>
+          <div role='button' onClick={() => openModal('catalog')}>
             <img src={katalogicon} alt='католог' />
             <H4STYLED>Католог</H4STYLED>
           </div>
@@ -52,9 +94,13 @@ const Catalog = () => {
           </div>
         </DIVMEDIASTYLED>
       </DIVMEDIAFIXEDSTYLED>
-      {catalogState && (
-        <Modal isOpen={catalogState}>
-          <CatalogList onClose={catalogHandlerChangeClose} />
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen}>
+          {selectedCatalog === 'catalog' ? (
+            <CatalogList onClose={closeModal} />
+          ) : (
+            <CatalogListVideo onClose={closeModal} />
+          )}
         </Modal>
       )}
     </>
@@ -89,7 +135,8 @@ const BUTTONSTYLED = styled.button`
   padding: 14px 0px;
   border-radius: 5px;
   background-color: ${(props) =>
-    props.variant === 'blue' ? '#0060ce' : '#fff'};
+    // eslint-disable-next-line no-nested-ternary
+    props.active ? '#dfdfdf' : props.variant === 'blue' ? '#0060ce' : '#fff'};
   padding-left: 20px;
   border: none;
   color: ${(props) => (props.variant === 'blue' ? '#fff' : '#888')};
@@ -98,10 +145,6 @@ const BUTTONSTYLED = styled.button`
   font-style: normal;
   font-weight: 600;
   cursor: pointer;
-  &:hover {
-    background-color: ${(props) =>
-      props.variant === 'blue' ? '#0060ce' : '#dfdfdf'};
-  }
 `
 const DIVMEDIAFIXEDSTYLED = styled.div`
   display: none;

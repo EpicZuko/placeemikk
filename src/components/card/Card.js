@@ -47,37 +47,44 @@ const CardSale = ({ array }) => {
 export default CardSale
 
 const DIVCONTAINERCARDSLIDER = styled.div`
-  width: 59%;
+  width: 74%;
   margin: 100px auto;
   z-index: 1000;
   gap: 0px;
-  padding-left: 23px;
+  padding-left: 10px;
   & .react-multiple-carousel__arrow--left {
     background: #c0c0c0;
     border-radius: 0px;
     min-width: 33px;
     min-height: 33px;
-    left: calc(0% + 1px);
+    left: calc(0.8% + 1px);
+    @media (max-width: 777px) {
+      left: calc(0% + 1px);
+    }
   }
   & .react-multiple-carousel__arrow--right {
     background: #c0c0c0;
     border-radius: 0px;
     width: 20px;
-    right: calc(2.6% + 1px);
+    right: calc(1.5% + 1px);
     min-width: 33px;
     min-height: 33px;
+    @media (max-width: 777px) {
+      right: calc(0% + 1px);
+    }
   }
 `
 
 const CardSaleStyled = styled.div`
-  width: 245px;
+  width: 250px;
   height: auto;
   gap: 0px;
   border-radius: 4px 0px 0px 0px;
   opacity: 0px;
   background: rgba(255, 255, 255, 1);
-  padding: 11px 10px;
+  padding: 0px 10px;
   padding-bottom: 20px;
+  margin-left: 10px;
 `
 const SPANDISCOUNTSTYLED = styled.span`
   z-index: 900;
@@ -85,7 +92,7 @@ const SPANDISCOUNTSTYLED = styled.span`
   width: 32px;
   height: 16px;
   top: 24px;
-  left: 190px;
+  left: 180px;
   gap: 0px;
   opacity: 0px;
   font-family: Roboto;

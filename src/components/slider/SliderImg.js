@@ -27,7 +27,7 @@ export default SliderImg
 const DIV = styled.div`
   margin: 40px auto;
   z-index: 1000;
-  width: 57%;
+  width: 71%;
   height: 351px;
   gap: 0px;
   opacity: 0px;
