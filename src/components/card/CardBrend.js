@@ -20,7 +20,7 @@ const CardBrend = ({ arrayCardBrend }) => {
       >
         {arrayCardBrend?.map((element) => {
           return (
-            <BUTTONSTYLED>
+            <BUTTONSTYLED key={element.id}>
               <IMGSTYLED src={element?.img} alt='brend' />
             </BUTTONSTYLED>
           )
@@ -43,7 +43,6 @@ const DIVCONTAINERCARDSLIDER = styled.div`
     min-width: 23px;
     min-height: 23px;
     z-index: 900;
-
     left: calc(0% + 1px);
     @media (max-width: 777px) {
       left: calc(0% + 1px);
@@ -61,6 +60,10 @@ const DIVCONTAINERCARDSLIDER = styled.div`
       right: calc(0% + 1px);
     }
   }
+  @media (max-width: 1024px) {
+    width: 90%;
+    margin: 30px auto;
+  }
 `
 const BUTTONSTYLED = styled.button`
   width: 270px;
@@ -71,6 +74,9 @@ const BUTTONSTYLED = styled.button`
   flex-basis: 100%;
   border-radius: 15px;
   background-color: #fff;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `
 const IMGSTYLED = styled.img`
   max-width: 100%;
