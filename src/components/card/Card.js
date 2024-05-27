@@ -75,6 +75,10 @@ const DIVCONTAINERCARDSLIDER = styled.div`
       right: calc(0% + 1px);
     }
   }
+  @media (max-width: 1024px) {
+    width: 90%;
+    margin: 0px auto;
+  }
 `
 
 const CardSaleStyled = styled.div`
@@ -87,6 +91,9 @@ const CardSaleStyled = styled.div`
   padding: 0px 10px;
   padding-bottom: 20px;
   margin-left: 10px;
+  @media (max-width: 1024px) {
+    width: 96%;
+  }
 `
 const SPANDISCOUNTSTYLED = styled.span`
   z-index: 900;

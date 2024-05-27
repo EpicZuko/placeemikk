@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 import React, { useState } from 'react'
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { CgScreen } from 'react-icons/cg'
 import styled from 'styled-components'
 import katalogicon from '../../assets/img/catalogmenu.svg'
 import device from '../../assets/img/device.svg'
@@ -64,8 +65,8 @@ const Catalog = () => {
         <div>
           <BUTTONSTYLED>
             <DIVIMGCONTAINER>
-              <img src={pinDrop} alt='' />
-              <h3>Где купить?</h3>
+              <ImgIconsStyledCgScreen />
+              <h3>Комплектующие ТВ</h3>
             </DIVIMGCONTAINER>
           </BUTTONSTYLED>
         </div>
@@ -118,7 +119,7 @@ const DIVCONATAINER = styled.div`
   background: #f5f5f5;
   margin: 0px;
   padding: 10px;
-  @media (max-width: 777px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `
@@ -148,7 +149,7 @@ const BUTTONSTYLED = styled.button`
 `
 const DIVMEDIAFIXEDSTYLED = styled.div`
   display: none;
-  @media (max-width: 777px) {
+  @media (max-width: 1024px) {
     display: block;
     position: fixed;
     bottom: 0px;
@@ -158,7 +159,7 @@ const DIVMEDIAFIXEDSTYLED = styled.div`
 `
 const DIVMEDIASTYLED = styled.div`
   display: none;
-  @media (max-width: 777px) {
+  @media (max-width: 1024px) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -176,4 +177,8 @@ const H4STYLED = styled.h4`
   line-height: 14px;
   display: block;
   color: #8c8c8c;
+`
+const ImgIconsStyledCgScreen = styled(CgScreen)`
+  width: 20px;
+  height: 20px;
 `

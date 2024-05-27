@@ -5,12 +5,6 @@ import { HiArrowLongLeft, HiArrowLongRight } from 'react-icons/hi2'
 import styled from 'styled-components'
 
 const CardWishList = ({ dataArray }) => {
-  const initialLikesState = dataArray.reduce((acc, item) => {
-    acc[item.id] = false
-    return acc
-  }, {})
-
-  const [likes, setLikes] = useState(initialLikesState)
   const [currentPage, setCurrentPage] = useState(1)
   const perPage = 12
 
@@ -33,13 +27,6 @@ const CardWishList = ({ dataArray }) => {
     }
   }
 
-  const handleLikeClick = (id) => {
-    setLikes((prevLikes) => ({
-      ...prevLikes,
-      [id]: !prevLikes[id],
-    }))
-  }
-
   return (
     <div>
       <DIVCARDWISHSTYLED>
@@ -49,11 +36,6 @@ const CardWishList = ({ dataArray }) => {
               <IMGSTYLED src={element.wishlist} alt='' />
               <TEXTSTYLED>{element.title}</TEXTSTYLED>
               <PRICESTYLED>{element.price} c.</PRICESTYLED>
-              <IMGLIKESTYLED
-                onClick={() => handleLikeClick(element.id)}
-                src={likes[element.id] ? 'likeYes' : 'likeNot'}
-                alt=''
-              />
             </CARDWISHLISTCONTAINERSTYLED>
           )
         })}
@@ -75,7 +57,7 @@ const CardWishList = ({ dataArray }) => {
   )
 }
 
-export default CardWishList
+export default React.memo(CardWishList)
 
 const CARDWISHLISTCONTAINERSTYLED = styled.div`
   width: 320px;
@@ -88,6 +70,9 @@ const CARDWISHLISTCONTAINERSTYLED = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 10px;
+  @media (max-width: 1024px) {
+    width: 90%;
+  }
 `
 
 const IMGSTYLED = styled.img`
@@ -97,6 +82,10 @@ const IMGSTYLED = styled.img`
   opacity: 0px;
   margin-bottom: 19px;
   padding: 20px 10px;
+  @media (max-width: 1024px) {
+    width: 90%;
+    height: auto;
+  }
 `
 
 const TEXTSTYLED = styled.p`
@@ -135,10 +124,6 @@ const PRICESTYLED = styled.span`
   font-size: 27px;
 `
 
-const IMGLIKESTYLED = styled.img`
-  margin-left: 160px;
-`
-
 const DIVCARDWISHSTYLED = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -146,14 +131,17 @@ const DIVCARDWISHSTYLED = styled.div`
   width: 70%;
   margin: 0px auto;
   gap: 40px;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `
 const DIVPREVNEXTSTYLED = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 54px;
   margin-bottom: 54px;
-  @media (max-width: 777px) {
-    margin-bottom: 154px;
+  @media (max-width: 1024px) {
+    margin-bottom: 50px;
   }
 `
 const SPANPAGESTYLED = styled.span`
@@ -188,7 +176,6 @@ const BUTTONSTYLED = styled.button`
   font-style: normal;
   outline: none !important;
   cursor: pointer;
-  border-bottom: 0;
   display: inline-block;
   text-align: center;
   text-decoration: none;
@@ -199,8 +186,6 @@ const BUTTONSTYLED = styled.button`
   padding: 5px 7px;
   width: auto;
   color: #959595;
-  display: flex;
-  align-items: center;
   &:hover {
     color: #fff;
     background-color: #555151;

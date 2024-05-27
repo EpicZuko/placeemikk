@@ -62,7 +62,7 @@ const UlStyled = styled.ul`
   padding: 20px;
   gap: 40px;
   box-shadow: 0px 0px 23.58px 0px rgba(0, 0, 0, 0.12);
-  @media (max-width: 777px) {
+  @media (max-width: 1024px) {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -70,7 +70,7 @@ const UlStyled = styled.ul`
 `
 const IMGMENUSTYLED = styled.img`
   display: none;
-  @media (max-width: 777px) {
+  @media (max-width: 1024px) {
     display: block;
     margin-left: -350px;
   }
@@ -99,7 +99,7 @@ const ContactListItem = styled.li`
   gap: 0.5em;
   font-family: Montserrat, sans-serif;
   cursor: pointer;
-  @media (max-width: 777px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `

@@ -31,6 +31,9 @@ export default CardSaleSliderImg
 
 const DIVSTYLED = styled.div`
   z-index: 1000;
+  @media (max-width: 777px) {
+    padding-right: 20px;
+  }
   .each-slide-effect > div {
     display: flex;
     align-items: center;
