@@ -191,7 +191,7 @@ const DescriptionInfoULSTYLED = styled.ul`
     padding: 10px;
     list-style: none;
     margin-top: 10px;
-    margin-bottom: 124px;
+    margin-bottom: 50px;
   }
 `
 const CharacteristicsStyled = styled.h1`
