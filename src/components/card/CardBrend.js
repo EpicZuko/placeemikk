@@ -34,7 +34,7 @@ export default CardBrend
 
 const DIVCONTAINERCARDSLIDER = styled.div`
   width: 72%;
-  margin: 100px auto;
+  margin: 40px auto;
   z-index: 900;
   gap: 0px;
   & .react-multiple-carousel__arrow--left {

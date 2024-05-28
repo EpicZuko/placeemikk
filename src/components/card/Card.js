@@ -48,7 +48,7 @@ export default CardSale
 
 const DIVCONTAINERCARDSLIDER = styled.div`
   width: 74%;
-  margin: 100px auto;
+  margin: 40px auto;
   z-index: 1000;
   gap: 0px;
   padding-left: 10px;
@@ -101,7 +101,7 @@ const SPANDISCOUNTSTYLED = styled.span`
   width: 32px;
   height: 16px;
   top: 24px;
-  left: 180px;
+  left: calc(5% + 1px);
   gap: 0px;
   opacity: 0px;
   font-family: Roboto;
@@ -111,6 +111,9 @@ const SPANDISCOUNTSTYLED = styled.span`
   border: 1px solid rgba(255, 67, 67, 1);
   border-radius: 10px;
   padding: 2px 6px;
+  @media (max-width: 1024px) {
+    left: calc(5% + 1px);
+  }
 `
 
 const PRICESTYLED = styled.h4`
